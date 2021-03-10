@@ -1,0 +1,41 @@
+
+   <div
+   *ngIf="form"
+   class="editForm d-flex justify-content-center">
+   <form [formGroup]="form" (ngSubmit)="submit()">
+    <div
+    class="mb-3">
+      <label
+      for="title"
+      class="form-label">
+      Post title</label>
+      <input
+      id="title" type="text"
+      formControlName="title"
+      class="form-control editForm__title">
+      <div
+      *ngIf="form.get('title').touched && form.get('title').invalid"
+      class="validation">
+      <small
+      *ngIf="form.get('title').errors.required">
+        Поле должно быть заполнено
+      </small>
+    </div>
+    </div>
+    <div class="mb-3">
+      <label
+      for="text"
+      class="form-label">Post text</label>
+      <textarea
+      name="text" id="text" cols="30" rows="10"
+      formControlName="text"
+      class="form-control"></textarea>
+    </div>
+    <button
+    type="submit"
+    class="btn btn-primary" 
+    [disabled]="form.invalid || submitted">
+    Publish</button>
+  </form>
+</div>
+

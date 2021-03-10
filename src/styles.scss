@@ -1,0 +1,16 @@
+
+
+@import "./assets/theme/colors";
+@import "./assets/theme/functions";
+@import "../node_modules/quill/dist/quill.core.css";
+@import "../node_modules/quill/dist/quill.snow.css";
+
+router-outlet ~ * {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+* {
+  font-family: "Roboto", sans-serif;
+}

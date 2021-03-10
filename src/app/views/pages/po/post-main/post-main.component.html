@@ -1,0 +1,76 @@
+ <div
+ class="adminPanel"
+ *ngIf="posts.length && authService.isLoggedIn$ && authService.isAdmin$ | async">
+ <br>
+<h1
+class="adminPanel__title font-weight-bold">
+Post administration table
+</h1>
+<table
+class="adminPanel__table table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Title</th>
+      <th>Date</th>
+      <th>Type of news</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+    *ngFor="let post of posts ; let idx = index">
+      <td>{{idx + 1}}</td>
+      <td>{{post.title}}</td>
+      <td>{{post.date | date: 'medium':null}}</td>
+      <td
+      *ngIf="post.attention; else elseBlock">ATTENTION</td>
+      <ng-template #elseBlock>
+        <td> Regular news</td>
+      </ng-template>
+      <td>
+        <button
+          class="btn btn-link open"
+          [routerLink]="['/products', 'post', post.id, 'edit']"
+        >
+          Edit
+        </button>
+        <a (click)="remove(post.id)">Delete</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div
+class="postList">
+<h3
+class="postList__heading font-weight-bold">Latest news</h3>
+<br>
+<div 
+class="form-group postList__filtering">
+  <input 
+    class="form-control"
+    type="text"
+    [(ngModel)]="search"
+    placeholder="Search">
+  <select
+    class="form-control "
+    name=""
+    [(ngModel)]="selectedType"
+  >
+    <option 
+      *ngFor="let postType of postTypes"
+      [ngValue]="postType" >
+      {{postType}}
+    </option>
+  </select>
+</div>
+<div>
+  <app-post
+  *ngFor="let post of posts | search:search | filterByAlert:selectedType"
+  [post]="post" 
+  >
+</app-post>
+</div>
+</div>

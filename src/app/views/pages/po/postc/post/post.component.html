@@ -1,0 +1,31 @@
+<div
+class="card post"
+*ngIf="post.approved">
+    <div
+    *ngIf="post.attention"
+    class="card-header">
+    <b> ATTENTION</b>
+    <p
+    *ngIf="post.sherpas && !post.solved">
+      Sherpas are working...</p>
+      <p
+      *ngIf="post.solved">
+      Solved</p>
+    </div>
+    <div
+    class="card-body">
+      <h4
+      class="card-title font-weight-medium">
+      {{post.title}}</h4>
+      <p>{{post.text.substring(0, 150)}}</p>
+      <p></p>
+      <small
+      class="card-subtitle mb-2 text-muted">
+      {{post.date | date}}</small>      
+    </div>
+    <button
+      [routerLink]="['/products', 'post', post.id]"
+      class="btn btn-secondary post__button">
+        Read post
+    </button>
+   </div>

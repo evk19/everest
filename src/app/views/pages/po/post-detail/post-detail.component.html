@@ -1,0 +1,69 @@
+<br>
+<div
+*ngIf="post$ | async as post" >
+  <div class="post">
+  <h1 
+  class="post__title">
+  {{post.title}}</h1>
+  <br>
+  <p 
+  class="post__text">
+  {{post.text}}</p>
+</div>
+  <div
+  *ngIf="authService.isSherpa$ | async">
+    <br>
+    <form
+    [formGroup]="form"
+    (ngSubmit)="submit()">
+      <p
+      class="h5 text-left ">
+      Write a comment</p>
+      <div
+      class="mb-3">
+        <label
+        for="text" class="form-label">
+        Comment text</label>
+        <textarea
+        name="text" id="text" cols="30" rows="10"
+        formControlName="text" class="form-control"></textarea>
+        <div
+        *ngIf="form.get('text').touched && form.get('text').invalid"
+        class="validation"
+      >
+        <small 
+        *ngIf="form.get('text').errors.required">
+          Field must be filled
+        </small>
+      </div>
+      </div>
+      <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="form.invalid || submitted">
+      Publish</button>
+    </form>
+
+    <button
+    *ngIf="!post.sherpas && post.attention && !post.solved"
+    (click)="start()"
+    class="btn btn-primary"
+    >Start working
+    </button>
+    <button
+    *ngIf="post.sherpas && !post.solved"
+    (click)="end()"
+    class="btn btn-primary"
+    >Stop working
+    </button>
+  </div>
+  <h2 class="post__comment">Sherpas Comments</h2>
+</div>
+
+<div
+*ngFor=" let comment of comment | commentpipe : post.id ; let idx = index"> 
+  <div class="card">
+    <h5 class="card-header">Sherpas comment #{{idx+1}}</h5>
+  <p class="card-text">{{comment.text}}</p>
+</div>
+</div>

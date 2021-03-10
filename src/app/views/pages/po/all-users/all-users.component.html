@@ -1,0 +1,34 @@
+<p>all-users works!</p>
+<div *ngIf="authService.isLoggedIn$ && authService.isAdmin$ | async; else elseBlock">
+    <table>
+        <thead>
+            <tr>
+                <th>Login</th>
+                <th>Type of user</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let client of clients">
+                <td>{{client.emailId}}</td>
+                <td>
+                    <ng-container *ngIf="client.isSherpa; else climberType">Sherpa</ng-container>
+                    <ng-template #climberType>Climber</ng-template>
+                </td>
+                <td>
+                    <ng-container *ngIf="client.isSherpa; else climberTransform">
+                        <a click="transform_toClimber()">Transform into Climber</a>
+                    </ng-container>
+                    <ng-template #climberTransform>
+                        <a click="transform_toSherpa()">Transform into Sherpa</a>
+                    </ng-template>
+                    
+                </td>
+                
+                
+            </tr>
+        </tbody>
+    </table>
+    
+</div>
+<ng-template #elseBlock>Only admin acess</ng-template>

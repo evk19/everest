@@ -1,0 +1,24 @@
+@import "../../../../../assets/theme/colors";
+@import "../../../../../assets/theme/functions";
+
+
+.form-control{
+  width: 200px;
+}
+.postList__filtering{
+  display: flex;
+  .form-control{
+    margin-right: 10px;
+  }
+  input{
+    width: 30%;
+  }
+}
+@media print{
+  *{
+    font-family: 'Times New Roman', Times, serif;
+  }
+  .form-control{
+    display: none;
+  }
+}

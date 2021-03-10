@@ -1,0 +1,14 @@
+@mixin print {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
+    width: 100%;
+}
+@mixin print_card {  
+        border: 2px solid grey;
+        width: 70%;
+        margin-top: 50px;
+        margin-left: 50px;
+        button{
+            display: none;
+        }
+}

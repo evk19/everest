@@ -1,0 +1,140 @@
+<br />
+<section class="container">
+  <!-- Login form -->
+  <div class="d-flex justify-content-center">
+    <form
+      style="width: 22rem;"
+      #loginForm="ngForm"
+      (ngSubmit)="signInWithEmail(loginForm)"
+    >
+      <p class="h5 text-center ">Welcome to Everest News</p>
+
+      <div class="form-group">
+        <label for="loginEmailId">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          id="loginEmailId"
+          aria-describedby="emailHelp"
+          placeholder="Email"
+          name="emailId"
+          [(ngModel)]="user.emailId"
+          mdbInputValidate
+          [email]="true"
+        />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="loginPassword"
+          name="loginPassword"
+          [(ngModel)]="user.loginPassword"
+          autocomplete="current-password"
+          placeholder="Password"
+        />
+      </div>
+
+      <div class="text-center">
+        <button
+          type="submit"
+          class="btn btn-primary col-12 waves-light"
+          id="loginButton"
+          mdbRippleRadius
+        >
+        Login
+        </button>
+      </div>
+    </form>
+  </div>
+  <br />
+  <div class="text-center">
+  <p>
+    New here?&nbsp;
+    <a
+      data-toggle="modal"
+      data-target="#createUserForm"
+      style="color: dodgerblue;"
+      >Create account</a
+    >
+  </p>
+</div>
+
+  <div
+    class="modal fade"
+    id="createUserForm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog cascading-modal" role="document">
+      <form #userForm="ngForm" (ngSubmit)="addUser(userForm)">
+        <div class="modal-content">
+          <div class="modal-header ">
+            <h4 class="title">Registration</h4>
+            <button
+              type="button"
+              class="close waves-effect waves-light"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div
+              class="alert alert-danger"
+              role="alert"
+              *ngIf="errorInUserCreate"
+            >
+              {{ errorMessage.message }}
+            </div>
+            <div class="form-group form-sm">
+              <label for="emailId">Email</label>
+              <input
+                mdbActive
+                type="email"
+                id="emailId"
+                class="form-control"
+                name="emailId"
+                [(ngModel)]="createUser.emailId"
+                placeholder="Email"
+                mdbInputValidate
+                [email]="true"
+                autocomplete="email"
+              />
+            </div>
+            <div class="form-group form-sm">
+              <label for="password">Password</label>
+              <input
+                mdbActive
+                type="password"
+                id="password"
+                class="form-control"
+                name="password"
+                [(ngModel)]="createUser.password"
+                placeholder="Password"
+                mdbInputValidate
+                autocomplete="new-password"
+              />
+            </div>
+            <div class="text-center mt-2">
+              <button
+                class="btn btn-primary col-12"
+                id="signUpButton"
+                mdbRippleRadius
+              >
+                Create account
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<br />
+<br />
+<br />

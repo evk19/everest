@@ -1,0 +1,51 @@
+@import "../product.component.scss";
+.post{
+    width: 70%;
+}
+.card{
+    width: 25%;
+    margin-bottom: 20px;
+    .card-text{
+        padding: 10px 10px 10px;
+    }
+}
+.form-control{
+    width: 50%;
+}
+form{
+    margin-bottom: 20px;
+}
+.post__comment{
+    display: none;
+}
+
+@media print{
+    *{
+        @include print;
+    }
+    .post{
+        padding: 50px;
+        width: 100%;
+        .post__title{
+            font-size: 50px;
+            font-weight: 800;
+        }
+        .post__text{
+            font-size: 30px;
+        }
+       
+    }
+    .post__comment{
+        display: inline-block;
+        margin-left: 50px;
+        font-weight: 800;
+
+    }
+    .card{
+        @include print_card;
+        .card-text{
+            font-size: 25px;
+        }
+    }
+
+}

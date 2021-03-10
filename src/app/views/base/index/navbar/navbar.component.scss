@@ -1,0 +1,50 @@
+@import "../../../../../assets/theme/colors";
+@import "../../../../../assets/theme/functions";
+
+.navbar {
+  top: 0;
+  background: var(--navBackground);
+  a  {
+    color: black;
+    &:hover{
+      color: var(--linkHover);
+    }
+  }
+  // }
+  .btn  {
+    color: #0d6efd;
+    margin-right: 25px;
+    &:hover{
+      color: white;
+    }
+  }
+  
+}
+.nav-brand{
+  font-weight: 100;
+}
+.color-container {
+  position: relative;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  margin: auto;
+  border-radius: 50%;
+  overflow: hidden;
+
+  .colorDiv {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: 50%;
+  }
+}
+
+::ng-deep {
+  .dropdown-menu {
+    margin-left: -6rem;
+  }
+}
